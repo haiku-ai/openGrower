@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: opengrower docker deployer
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      TOKEN: ${{ secrets.TOKEN }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK
