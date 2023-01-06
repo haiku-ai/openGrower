@@ -27,5 +27,5 @@ jobs:
     - name: Build the Docker image
       run: | 
         docker build . --file Dockerfile --tag opengrower:$(date +%s)
-        docker push ghcr.io/opengrower${{ steps.project.outputs.version }}
+        docker push ghcr.io/haiku-ai/opengrower
       
