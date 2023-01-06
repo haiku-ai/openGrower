@@ -27,5 +27,6 @@ jobs:
     - name: Build the Docker image
       run: | 
         docker build -t opengrower .
-        docker push opengrower
+        docker tag opengrower ghcr.io/haiku-ai/opengrower:latest
+        docker push ghcr.io/haiku-ai/opengrower:latest
       
