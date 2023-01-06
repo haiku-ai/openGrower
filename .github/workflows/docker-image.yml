@@ -26,6 +26,6 @@ jobs:
       run: echo "version=$(mvn help:evaluate -Dexpression=project.version -DforceStdout -q)" >> $GITHUB_OUTPUT
     - name: Build the Docker image
       run: | 
-        docker build . --file Dockerfile --tag opengrower:$(date +%s)
-        docker push ghcr.io/haiku-ai/opengrower
+        docker build -t opengrower .
+        docker push opengrower
       
