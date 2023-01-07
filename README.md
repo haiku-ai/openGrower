@@ -10,8 +10,6 @@ docker run -d --name mongo -p 27017:27017 --network opengrower -e MONGO_INITDB_R
 
 docker run --name opengrower -p 8080:8080 --network opengrower ghcr.io/haiku-ai/opengrower
 
-docker run -d --name grafana -p 3000:3000 grafana/grafana
-
 docker run -p 4019:4019 -p 4018:4018 --network opengrower \
   -e CB_SECRET=admin123 \
   -e CB_API_HOST=0.0.0.0 \
