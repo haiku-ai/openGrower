@@ -21,4 +21,9 @@ public class SensorMeasurementController {
         List<SensorMeasurement> getSensorMeasurements(@PathVariable String sensor) {
             return sensorMeasurementRepository.findBySensor(sensor);
         }
+
+        @GetMapping("/sensors")
+        List<String> getSensors() {
+            return sensorMeasurementRepository.getDistinctById();
+        }
     }
