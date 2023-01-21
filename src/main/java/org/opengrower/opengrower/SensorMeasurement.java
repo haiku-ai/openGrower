@@ -1,6 +1,8 @@
 package org.opengrower.opengrower;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ public class SensorMeasurement {
 
     @Id
     private String id;
+    @Indexed
     private String sensor;
     private Double moisture;
     private Double temperature;

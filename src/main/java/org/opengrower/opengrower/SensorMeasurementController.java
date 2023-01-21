@@ -13,8 +13,9 @@ public class SensorMeasurementController {
         }
 
         @PostMapping("/measurement")
-        SensorMeasurement createSensorMeasurement(@RequestBody SensorMeasurement sensorMeasurement) {
-            return sensorMeasurementRepository.save(new SensorMeasurement(sensorMeasurement));
+        SensorMeasurement createSensorMeasurement(@RequestBody SensorMeasurement measurement) {
+            SensorMeasurement sensorMeasurement = new SensorMeasurement(measurement);
+            return sensorMeasurementRepository.save(sensorMeasurement);
         }
 
         @GetMapping("/measurements/{sensor}")
@@ -22,8 +23,4 @@ public class SensorMeasurementController {
             return sensorMeasurementRepository.findBySensor(sensor);
         }
 
-        @GetMapping("/sensors")
-        List<String> getSensors() {
-            return sensorMeasurementRepository.getDistinctById();
-        }
     }
