@@ -8,7 +8,5 @@ docker run -d --name mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=... -e M
 
 docker run -d --name opengrower -p 8080:8080 ghcr.io/haiku-ai/opengrower -e MONGO_DB_URL=... -e MONGO_DB_USERNAME=... -e MONGO_DB_PASSWORD=... 
 
-docker run -d --name grafana -p 3000:3000 ghcr.io/ajeje93/grafana-mongodb-docker:latest
-
 
 
