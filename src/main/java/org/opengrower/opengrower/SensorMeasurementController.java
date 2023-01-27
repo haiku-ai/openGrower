@@ -15,6 +15,7 @@ public class SensorMeasurementController {
         @PostMapping("/measurement")
         SensorMeasurement createSensorMeasurement(@RequestBody SensorMeasurement measurement) {
             SensorMeasurement sensorMeasurement = new SensorMeasurement(measurement);
+            System.out.println(sensorMeasurement);
             return sensorMeasurementRepository.save(sensorMeasurement);
         }
 
