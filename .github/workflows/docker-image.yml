@@ -35,6 +35,6 @@ jobs:
       run: | 
         docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v8 -t opengrower . 
         docker buildx tag opengrower ghcr.io/haiku-ai/opengrower:latest
-        echo ${{ env.TOKEN }} | docker buildx login ghcr.io -u ${{ env.USERNAME }} --password-stdin
+        echo ${{ env.TOKEN }} | docker login ghcr.io -u ${{ env.USERNAME }} --password-stdin
         docker buildx push ghcr.io/haiku-ai/opengrower:latest
       
