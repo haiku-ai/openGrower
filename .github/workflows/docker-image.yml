@@ -24,6 +24,13 @@ jobs:
     - name: Extract Version
       id: project
       run: echo "version=$(mvn help:evaluate -Dexpression=project.version -DforceStdout -q)" >> $GITHUB_OUTPUT
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@master
     - name: Build the Docker image
       run: | 
         docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v8 -t opengrower . 
