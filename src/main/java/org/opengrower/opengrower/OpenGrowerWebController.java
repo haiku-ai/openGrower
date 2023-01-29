@@ -23,7 +23,6 @@ public class OpenGrowerWebController {
     @GetMapping("/sensors")
     public String sensors(@RequestParam(name = "name", required = false, defaultValue = "") String name, Model model) {
         final List<Sensor> sensors = sensorRepository.findAll();
-        System.out.println("sensors: " + sensors);
         final List<String> sensorNames = new ArrayList<>();
         for(final Sensor sensor : sensors) {
             sensorNames.add(sensor.getName());
