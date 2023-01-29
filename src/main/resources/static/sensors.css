@@ -1,14 +1,17 @@
 #sensors {
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
 }
 
 #selected {
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
 }
 
 #measurements {
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
 }
