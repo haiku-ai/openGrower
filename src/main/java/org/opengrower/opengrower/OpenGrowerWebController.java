@@ -13,20 +13,22 @@ import java.util.List;
 public class OpenGrowerWebController {
     private final SensorMeasurementRepository sensorMeasurementRepository;
 
-    OpenGrowerWebController(SensorMeasurementRepository sensorMeasurementRepository) {
+    private final SensorRepository sensorRepository;
+
+    OpenGrowerWebController(SensorMeasurementRepository sensorMeasurementRepository, SensorRepository sensorRepository) {
         this.sensorMeasurementRepository = sensorMeasurementRepository;
+        this.sensorRepository = sensorRepository;
     }
 
     @GetMapping("/sensors")
     public String sensors(@RequestParam(name = "name", required = false, defaultValue = "") String name, Model model) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, -1);
-       /* final List<String> sensors = sensorMeasurementRepository.getDistinctByTimeStampAfter(calendar.getTime());
-        final List<String> sensorsParsed = new ArrayList<>();
-        for(final String sensor : sensors) {
-            sensorsParsed.add(sensor.);
+        final List<Sensor> sensors = sensorRepository.findAll();
+        System.out.println("sensors: " + sensors);
+        final List<String> sensorNames = new ArrayList<>();
+        for(final Sensor sensor : sensors) {
+            sensorNames.add(sensor.getName());
         }
-        model.addAttribute("sensors", sensors);*/
+        model.addAttribute("sensors", sensorNames);
         return "sensors";
     }
 

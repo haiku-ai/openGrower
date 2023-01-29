@@ -27,11 +27,16 @@ jobs:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@master
       with:
-        platforms: linux/arm64/v8
-    - name: Build the Docker image
+        platforms: linux/amd64,linux/arm64/v8
+    - name: Build the linux/arm64/v8 Docker image
       run: | 
         docker build --platform linux/arm64/v8 -t opengrower . 
         docker tag opengrower ghcr.io/haiku-ai/opengrower:latest
         echo ${{ env.TOKEN }} | docker login ghcr.io -u ${{ env.USERNAME }} --password-stdin
-        docker push ghcr.io/haiku-ai/opengrower:latest
-      
+        docker push ghcr.io/haiku-ai/opengrower:${{ project.version }}
+    - name: Build the linux/amd64 Docker image
+      run: |
+        docker build --platform linux/amd64 -t opengrower . 
+        docker tag opengrower ghcr.io/haiku-ai/opengrower:latest
+        echo ${{ env.TOKEN }} | docker login ghcr.io -u ${{ env.USERNAME }} --password-stdin
+        docker push ghcr.io/haiku-ai/opengrower:${{ project.version }}
