@@ -1,0 +1,14 @@
+#sensors {
+    text-align: center;
+    display: flex;
+}
+
+#selected {
+    text-align: center;
+    display: flex;
+}
+
+#measurements {
+    text-align: center;
+    display: flex;
+}
