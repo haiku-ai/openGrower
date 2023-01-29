@@ -29,7 +29,7 @@ public class SensorMeasurementController {
         List<SensorMeasurement> getSensorMeasurements(@PathVariable String sensor) {
             Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.DATE, -7);
-            return sensorMeasurementRepository.findBySensorAndTimeStamp(sensor, calendar.getTime());
+            return sensorMeasurementRepository.findBySensorAndTimeStampAfter(sensor, calendar.getTime());
         }
 
 
