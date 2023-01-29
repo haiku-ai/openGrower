@@ -7,7 +7,7 @@
     <link type="text/css" href="sensors.css" rel="stylesheet" />
 </head>
 <body>
-<label for="sensors">Choose a station:</label>
+<label id="sensor_label" for="sensors">Choose a station:</label>
 <select name="sensors" id="sensors" onchange="onSelectedChange()">
     <option value="0">select station</option>
     <option id="selected" th:each="sensor : ${sensors}" th:value="${sensor}" th:text="${sensor}"></option>
