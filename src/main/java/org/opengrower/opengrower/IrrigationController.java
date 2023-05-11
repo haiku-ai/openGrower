@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 public class IrrigationController {
+    private final static String ERROR = "-1";
     private final static String HOLD = "2";
     private final static String ON = "1";
     private final static String OFF = "0";
@@ -30,7 +31,7 @@ public class IrrigationController {
                 return HOLD;
             }
         } else {
-            return HOLD;
+            return ERROR;
         }
     }
 }
