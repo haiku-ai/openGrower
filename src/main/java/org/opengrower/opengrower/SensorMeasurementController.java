@@ -31,7 +31,4 @@ public class SensorMeasurementController {
             calendar.add(Calendar.DATE, -7);
             return sensorMeasurementRepository.findBySensorAndTimeStampAfter(sensor, calendar.getTime());
         }
-
-
-
     }
