@@ -32,7 +32,7 @@ public class IrrigationController {
             }
         } else {
             //return ERROR;
-            return ON;
+            return OFF;
         }
     }
 }
