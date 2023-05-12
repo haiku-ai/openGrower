@@ -2,7 +2,6 @@ package org.opengrower.opengrower;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Calendar;
 import java.util.List;
 
 @RestController()
@@ -27,8 +26,6 @@ public class SensorMeasurementController {
 
         @GetMapping("/measurements/{sensor}")
         List<SensorMeasurement> getSensorMeasurements(@PathVariable String sensor) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DATE, -7);
-            return sensorMeasurementRepository.findBySensorAndTimeStampAfter(sensor, calendar.getTime());
+            return sensorMeasurementRepository.findBySensor(sensor);
         }
     }
