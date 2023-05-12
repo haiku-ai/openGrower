@@ -18,6 +18,7 @@ public class SensorMeasurementController {
         @PostMapping("/measurement")
         SensorMeasurement createSensorMeasurement(@RequestBody SensorMeasurement measurement) {
             SensorMeasurement sensorMeasurement = new SensorMeasurement(measurement);
+            System.out.println("measurement: " + sensorMeasurement);
             if(sensorRepository.findDistinctByName(sensorMeasurement.getSensor()) == null) {
                 sensorRepository.save(new Sensor(sensorMeasurement.getSensor()));
             }
