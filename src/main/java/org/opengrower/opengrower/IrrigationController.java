@@ -20,7 +20,7 @@ public class IrrigationController {
 
     @GetMapping("irrigation/{sensor}")
     String getIrrigationUpdate(@PathVariable String sensor) {
-        SensorMeasurement sensorMeasurement = sensorMeasurementRepository.getFirstBySensor(sensor);
+        SensorMeasurement sensorMeasurement = sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         System.out.println(sensorMeasurement);
         if(sensorMeasurement != null){
             if(sensorMeasurement.getMoisture() > moistureThresholdOff){

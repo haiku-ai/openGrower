@@ -9,5 +9,5 @@ public interface SensorMeasurementRepository extends MongoRepository<SensorMeasu
     public List<SensorMeasurement> findBySensor(String sensor);
     public List<SensorMeasurement> findBySensorAndTimeStamp(String sensor, Date timestamp);
     public List<SensorMeasurement> findBySensorAndTimeStampAfter(String sensor, Date timestamp);
-    public SensorMeasurement getFirstBySensor(String sensor);
+    public SensorMeasurement findFirstBySensorOrderByTimeStampDesc(String sensor);
 }
