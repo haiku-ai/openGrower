@@ -31,8 +31,7 @@ public class IrrigationController {
                 return HOLD;
             }
         } else {
-            //return ERROR;
-            return OFF;
+            return ERROR;
         }
     }
 }
