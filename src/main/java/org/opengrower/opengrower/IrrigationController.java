@@ -10,8 +10,8 @@ public class IrrigationController {
     private final static String HOLD = "2";
     private final static String ON = "1";
     private final static String OFF = "0";
-    private final double moistureThresholdOn = 45.0;
-    private final double moistureThresholdOff = 60.0;
+    private final double moistureThresholdOn = 47.0;
+    private final double moistureThresholdOff = 52.0;
     private final SensorMeasurementRepository sensorMeasurementRepository;
 
     IrrigationController(SensorMeasurementRepository sensorMeasurementRepository) {
@@ -20,8 +20,8 @@ public class IrrigationController {
 
     @GetMapping("irrigation/{sensor}")
     String getIrrigationUpdate(@PathVariable String sensor) {
-        SensorMeasurement sensorMeasurement = sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
-        System.out.println(sensorMeasurement);
+        SensorMeasurement sensorMeasurement =
+                sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         if(sensorMeasurement != null){
             if(sensorMeasurement.getMoisture() > moistureThresholdOff){
                 return OFF;
