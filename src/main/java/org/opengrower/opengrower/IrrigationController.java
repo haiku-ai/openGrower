@@ -11,7 +11,8 @@ public class IrrigationController {
     private final static String ON = "1";
     private final static String OFF = "0";
     private final double moistureThresholdOn = 47.0;
-    private final double moistureThresholdOff = 52.0;
+    private final double moistureThresholdOff = 55.0;
+    private final double SATURATED = 0.0;
     private final SensorMeasurementRepository sensorMeasurementRepository;
 
     IrrigationController(SensorMeasurementRepository sensorMeasurementRepository) {
@@ -23,7 +24,8 @@ public class IrrigationController {
         SensorMeasurement sensorMeasurement =
                 sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         if(sensorMeasurement != null){
-            if(sensorMeasurement.getMoisture() > moistureThresholdOff){
+            if(sensorMeasurement.getMoisture() > moistureThresholdOff ||
+                sensorMeasurement.getMoisture() == SATURATED ){
                 return OFF;
             } else if (sensorMeasurement.getMoisture() < moistureThresholdOn) {
                 return ON;
