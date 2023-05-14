@@ -1,4 +1,4 @@
-let ctx = null;
+let ctx = document.getElementById("measurements_plot").getContext("2d");
 let labels = [];
 let data = [];
 let config = {
@@ -19,6 +19,14 @@ function onSelectedChange() {
     document.getElementById("measurements_iframe").src = "http://192.168.1.80:8080/measurements/" + selected;
 
     let jsonList = document.getElementById("measurements_iframe").innerHTML;
+
+    let labels = jsonList.jsonarray.map(function (e) {
+        return e.timeStamp;
+    });
+    let data = jsonList.jsonarray.map(function (e) {
+        return e.moisture;
+    });
+
     console.log(jsonList);
     console.log(labels);
     console.log(data);
