@@ -1,4 +1,4 @@
-let ctx = canvas.getContext('2d');
+let ctx = null;
 let labels = [];
 let data = [];
 let config = {
@@ -20,12 +20,6 @@ function onSelectedChange() {
 
     let jsonList = document.getElementById("measurements_iframe").innerHTML;
     console.log(jsonList);
-    let labels = jsonList.jsonarray.map(function (e) {
-        return e.timeStamp;
-    });
-    let data = jsonList.jsonarray.map(function (e) {
-        return e.moisture;
-    });
     console.log(labels);
     console.log(data);
 
