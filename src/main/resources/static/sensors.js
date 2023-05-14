@@ -1,4 +1,4 @@
-let ctx = Chart.helpers.canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
 let labels = [];
 let data = [];
 let config = {
