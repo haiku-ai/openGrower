@@ -1,18 +1,21 @@
-let ctx = document.getElementById("measurements_plot").getContext("2d");
-let labels = [];
-let data = [];
-let config = {
-    type: 'line',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Graph Line',
-            data: data,
-            backgroundColor: 'rgba(0, 119, 204, 0.3)'
-        }]
-    }
-};
-let measurements_plot = new Chart(ctx, config);
+
+document.onload(function(){
+    let ctx = document.getElementById("measurements_plot").getContext("2d");
+    let labels = [];
+    let data = [];
+    let config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Graph Line',
+                data: data,
+                backgroundColor: 'rgba(0, 119, 204, 0.3)'
+            }]
+        }
+    };
+    window.measurements_plot = new Chart(ctx, config);
+})
 
 function onSelectedChange() {
     let selected = document.getElementById("selected").value;
@@ -31,6 +34,6 @@ function onSelectedChange() {
     console.log(labels);
     console.log(data);
 
-    measurements_plot.labels = labels;
-    measurements_plot.data = data;
+    window.measurements_plot.labels = labels;
+    window.measurements_plot.data = data;
 }

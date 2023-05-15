@@ -25,7 +25,7 @@ public class IrrigationController {
                 sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         if(sensorMeasurement != null){
             if(sensorMeasurement.getMoisture() > moistureThresholdOff ||
-                sensorMeasurement.getMoisture() == SATURATED ){
+                sensorMeasurement.getMoisture() <= SATURATED){
                 return OFF;
             } else if (sensorMeasurement.getMoisture() < moistureThresholdOn) {
                 return ON;
