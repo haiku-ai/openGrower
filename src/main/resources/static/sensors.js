@@ -1,5 +1,4 @@
 
-document.onload(function(){
     let ctx = document.getElementById("measurements_plot").getContext("2d");
     let labels = [];
     let data = [];
@@ -15,7 +14,7 @@ document.onload(function(){
         }
     };
     window.measurements_plot = new Chart(ctx, config);
-})
+
 
 function onSelectedChange() {
     let selected = document.getElementById("selected").value;
