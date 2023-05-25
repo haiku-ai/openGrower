@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,6 +15,8 @@ import java.util.List;
 public class OpenGrowerWebController {
     private final SensorMeasurementRepository sensorMeasurementRepository;
     private final SensorRepository sensorRepository;
+
+    private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     OpenGrowerWebController(SensorMeasurementRepository sensorMeasurementRepository, SensorRepository sensorRepository) {
         this.sensorMeasurementRepository = sensorMeasurementRepository;
@@ -43,8 +46,8 @@ public class OpenGrowerWebController {
                     .findFirstBySensorOrderByTimeStampDesc(sensor.getName()).getTimeStamp().getTime();
             double minutesSinceLastUpdate = millisSinceLastUpdate / 1000.0 / 60.0;
             String state = sensor.getName() + " " +
-                    "minutes since latest reading: " + minutesSinceLastReading + " " +
-                    "minutes since latest update: " + minutesSinceLastUpdate;
+                    "minutes since latest reading: " + decimalFormat.format(minutesSinceLastReading) + " " +
+                    "minutes since latest update: " + decimalFormat.format(minutesSinceLastUpdate);
             sensorStates.add(state);
         }
         model.addAttribute("sensorStates", sensorStates);

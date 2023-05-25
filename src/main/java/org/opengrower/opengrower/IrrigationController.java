@@ -28,11 +28,8 @@ public class IrrigationController {
 
     @GetMapping("irrigation/{sensor}")
     String getIrrigationUpdate(@PathVariable String sensor) {
-        try {
-            sensorRepository.findDistinctByName(sensor).setLatestReadingDate(Calendar.getInstance().getTime());
-        } catch (NullPointerException e) {
-            // don't care, sensor doesn't exist yet
-        }
+
+        sensorRepository.findDistinctByName(sensor).setLatestReadingDate(Calendar.getInstance().getTime());
 
         SensorMeasurement sensorMeasurement =
                 sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);

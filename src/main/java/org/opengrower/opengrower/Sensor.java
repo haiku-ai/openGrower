@@ -1,5 +1,6 @@
 package org.opengrower.opengrower;
 
+import org.springframework.data.annotation.AccessType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
@@ -12,6 +13,7 @@ public class Sensor {
     @Indexed
     private String name;
     private Date creationDate;
+    @AccessType(AccessType.Type.PROPERTY)
     private Date latestReadingDate;
     private String state;
 
