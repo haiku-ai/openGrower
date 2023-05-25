@@ -11,8 +11,8 @@ public class Sensor {
     private String id;
     @Indexed
     private String name;
-
     private Date creationDate;
+    private String state;
 
     public Sensor(String name) {
         this.name = name;
@@ -22,31 +22,27 @@ public class Sensor {
     public void setId(String id) {
         this.id = id;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setCreationDate(Date creationDate) {this.creationDate = creationDate; }
-
+    public void setState(String state) {this.state = state; }
     public String getId() {
         return this.id;
     }
-
     public String getName() {
         return this.name;
     }
-
     public Date getCreationDate() {
         return this.creationDate;
     }
-
+    public String getState() {return this.state; }
 
     @Override
     public String toString() {
         return String.format(
-                "SensorMasurement[id=%s, name='%s', creationDate='%s']",
-                id, name, creationDate);
+                "Sensor[id='%s', name='%s', creationDate='%s', state='%s']",
+                id, name, creationDate, state);
     }
 
 }

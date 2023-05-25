@@ -14,7 +14,6 @@ public class SensorMeasurement {
     private String sensor;
     private Double moisture;
     private Double temperature;
-    private Double humidity;
     private Double light;
     public Date timeStamp;
 
@@ -25,7 +24,6 @@ public class SensorMeasurement {
         this.sensor = sensor;
         this.moisture = moisture;
         this.temperature = temperature;
-        this.humidity = humidity;
         this.light = light;
         this.timeStamp = Calendar.getInstance().getTime();
     }
@@ -35,7 +33,6 @@ public class SensorMeasurement {
         this.sensor = sensorMeasurement.getSensor();
         this.moisture = sensorMeasurement.getMoisture();
         this.temperature = sensorMeasurement.getTemperature();
-        this.humidity = sensorMeasurement.getHumidity();
         this.light = sensorMeasurement.getLight();
         this.timeStamp = Calendar.getInstance().getTime();
     }
@@ -54,10 +51,6 @@ public class SensorMeasurement {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
-    }
-
-    public void setHumidity(Double humidity) {
-        this.humidity = humidity;
     }
 
     public void setLight(Double light) {
@@ -83,10 +76,6 @@ public class SensorMeasurement {
         return this.temperature;
     }
 
-    public Double getHumidity() {
-        return this.humidity;
-    }
-
     public Double getLight() {
         return this.light;
     }
@@ -99,8 +88,8 @@ public class SensorMeasurement {
     public String toString() {
         return String.format(
                 "SensorMasurement[id=%s, sensor='%s', moisture='%s', temperature='%s', " +
-                        "humidity='%s', light='%s', timeStamp='%s']",
-                id, sensor, moisture, temperature, humidity, light, timeStamp);
+                        "light='%s', timeStamp='%s']",
+                id, sensor, moisture, temperature, light, timeStamp);
     }
 
 }

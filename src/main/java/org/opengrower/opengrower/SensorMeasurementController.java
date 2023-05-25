@@ -29,8 +29,13 @@ public class SensorMeasurementController {
             return sensorMeasurementRepository.findBySensor(sensor);
         }
 
-        @GetMapping("/measurements/latest/{sensor}")
-        List<SensorMeasurement> getLatestSensorMeasurements(@PathVariable String sensor) {
+        @GetMapping("/measurements/latest10/{sensor}")
+        List<SensorMeasurement> getLatest10SensorMeasurements(@PathVariable String sensor) {
             return sensorMeasurementRepository.findFirst10BySensorOrderByTimeStampDesc(sensor);
         }
+    @GetMapping("/measurements/latest100/{sensor}")
+        List<SensorMeasurement> getLatest100SensorMeasurements(@PathVariable String sensor) {
+        return sensorMeasurementRepository.findFirst100BySensorOrderByTimeStampDesc(sensor);
+    }
+
     }
