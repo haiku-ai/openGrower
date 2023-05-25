@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController()
 public class IrrigationController {
     private final static String ERROR = "-1";
@@ -25,6 +27,8 @@ public class IrrigationController {
 
     @GetMapping("irrigation/{sensor}")
     String getIrrigationUpdate(@PathVariable String sensor) {
+        sensorRepository.findDistinctByName(sensor).setLatestReadingDate(new Date());
+
         SensorMeasurement sensorMeasurement =
                 sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         if(sensorMeasurement != null){

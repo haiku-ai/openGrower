@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class OpenGrowerWebController {
     private final SensorMeasurementRepository sensorMeasurementRepository;
-
     private final SensorRepository sensorRepository;
 
     OpenGrowerWebController(SensorMeasurementRepository sensorMeasurementRepository, SensorRepository sensorRepository) {
@@ -30,4 +30,23 @@ public class OpenGrowerWebController {
         return "sensors";
     }
 
+    @GetMapping("/health")
+    public String health(@RequestParam(name = "name", required = false, defaultValue = "") String name, Model model) {
+        final List<Sensor> sensors = sensorRepository.findAll();
+        final List<String> sensorStates = new ArrayList<>();
+        for(final Sensor sensor : sensors) {
+            Date now = new Date();
+            long millisSinceLastReading = now.getTime() - sensor.getLatestReadingDate().getTime();
+            long minutesSinceLastReading = millisSinceLastReading / 1000 / 60;
+            long millisSinceLastUpdate = now.getTime() - sensorMeasurementRepository
+                    .findFirstBySensorOrderByTimeStampDesc(sensor.getName()).getTimeStamp().getTime();
+            long minutesSinceLastUpdate = millisSinceLastUpdate / 1000 / 60;
+            String state = sensor.getName() +
+                    "\n\tminutes since latest reading:" + minutesSinceLastReading +
+                    "\n\tminutes since latest update:" + minutesSinceLastUpdate + "\n";
+            sensorStates.add(state);
+        }
+        model.addAttribute("sensorStates", sensorStates);
+        return "health";
+    }
 }
