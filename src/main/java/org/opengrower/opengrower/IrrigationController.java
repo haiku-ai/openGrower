@@ -28,7 +28,6 @@ public class IrrigationController {
 
     @GetMapping("irrigation/{sensor}")
     String getIrrigationUpdate(@PathVariable String sensor) {
-        System.out.println(sensor);
         if(sensorRepository.findDistinctByName(sensor) != null) {
             sensorRepository.findDistinctByName(sensor).setLatestReadingDate(Calendar.getInstance().getTime());
         }
