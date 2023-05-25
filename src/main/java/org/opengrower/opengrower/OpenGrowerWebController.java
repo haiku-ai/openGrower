@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class OpenGrowerWebController {
         final List<Sensor> sensors = sensorRepository.findAll();
         final List<String> sensorStates = new ArrayList<>();
         for(final Sensor sensor : sensors) {
-            Date now = new Date();
+            Date now = Calendar.getInstance().getTime();
             long millisSinceLastReading = now.getTime() - sensor.getLatestReadingDate().getTime();
             long minutesSinceLastReading = millisSinceLastReading / 1000 / 60;
             long millisSinceLastUpdate = now.getTime() - sensorMeasurementRepository

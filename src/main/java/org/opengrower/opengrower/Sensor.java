@@ -18,6 +18,7 @@ public class Sensor {
     public Sensor(String name) {
         this.name = name;
         this.creationDate = Calendar.getInstance().getTime();
+        this.latestReadingDate = Calendar.getInstance().getTime();
     }
 
     public void setId(String id) {
