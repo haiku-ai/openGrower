@@ -30,13 +30,13 @@ jobs:
         platforms: linux/amd64,linux/arm64/v8
     - name: Build the linux/arm64/v8 Docker image
       run: | 
-        docker build --platform linux/arm64/v8 -t opengrower . 
-        docker tag opengrower ghcr.io/haiku-ai/opengrower:latest
+        docker build --platform linux/arm64/v8 -t opengrower-sensor-server . 
+        docker tag opengrower ghcr.io/opengrower/opengrower-sensor-server:latest
         echo ${{ env.TOKEN }} | docker login ghcr.io -u ${{ env.USERNAME }} --password-stdin
-        docker push ghcr.io/haiku-ai/opengrower:latest
+        docker push ghcr.io/opengrower/opengrower-sensor-server:latest
     - name: Build the linux/amd64 Docker image
       run: |
         docker build --platform linux/amd64 -t opengrower . 
-        docker tag opengrower ghcr.io/haiku-ai/opengrower:latest
+        docker tag opengrower-sensor-server ghcr.io/opengrower/opengrower-sensor-server:latest
         echo ${{ env.TOKEN }} | docker login ghcr.io -u ${{ env.USERNAME }} --password-stdin
-        docker push ghcr.io/haiku-ai/opengrower:latest
+        docker push ghcr.io/opengrower/opengrower-sensor-server:latest
