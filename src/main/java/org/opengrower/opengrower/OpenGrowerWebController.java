@@ -38,13 +38,13 @@ public class OpenGrowerWebController {
         for(final Sensor sensor : sensors) {
             Date now = Calendar.getInstance().getTime();
             long millisSinceLastReading = now.getTime() - sensor.getLatestReadingDate().getTime();
-            long minutesSinceLastReading = millisSinceLastReading / 1000 / 60;
+            double minutesSinceLastReading = millisSinceLastReading / 1000.0 / 60.0;
             long millisSinceLastUpdate = now.getTime() - sensorMeasurementRepository
                     .findFirstBySensorOrderByTimeStampDesc(sensor.getName()).getTimeStamp().getTime();
-            long minutesSinceLastUpdate = millisSinceLastUpdate / 1000 / 60;
-            String state = sensor.getName() +
-                    "\n\tminutes since latest reading:" + minutesSinceLastReading +
-                    "\n\tminutes since latest update:" + minutesSinceLastUpdate + "\n";
+            double minutesSinceLastUpdate = millisSinceLastUpdate / 1000.0 / 60.0;
+            String state = sensor.getName() + " " +
+                    "minutes since latest reading: " + minutesSinceLastReading + " " +
+                    "minutes since latest update: " + minutesSinceLastUpdate;
             sensorStates.add(state);
         }
         model.addAttribute("sensorStates", sensorStates);
