@@ -13,7 +13,6 @@ public class Sensor {
     @Indexed
     private String name;
     private Date creationDate;
-    @AccessType(AccessType.Type.PROPERTY)
     private Date latestReadingDate;
     private String state;
 
