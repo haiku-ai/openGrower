@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.opengrower</groupId>
     <artifactId>openGrower</artifactId>
-    <version>0.0.44-SNAPSHOT</version>
+    <version>0.0.45-SNAPSHOT</version>
     <name>openGrower</name>
     <description>openGrower</description>
     <properties>
