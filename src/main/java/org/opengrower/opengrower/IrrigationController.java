@@ -14,7 +14,7 @@ public class IrrigationController {
     private final static String HOLD_OFF = "3";
     private final static String ON = "1";
     private final static String OFF = "0";
-    private final double moistureThresholdOn = 45.0;
+    private final double moistureThresholdOn = 49.5;
     private final double moistureThresholdOff = 55.0;
     private final double SATURATED = 0.0;
     private final SensorMeasurementRepository sensorMeasurementRepository;
