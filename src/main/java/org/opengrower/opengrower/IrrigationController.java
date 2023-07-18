@@ -30,20 +30,21 @@ public class IrrigationController {
     String getIrrigationUpdate(@PathVariable String sensor) {
         String updateState = null;
 
-        sensorRepository.findDistinctByName(sensor).setLatestReadingDate(Calendar.getInstance().getTime());
+        Sensor sensorr = sensorRepository.findDistinctByName(sensor);
+        sensorr.setLatestReadingDate(Calendar.getInstance().getTime());
 
         SensorMeasurement sensorMeasurement =
                 sensorMeasurementRepository.findFirstBySensorOrderByTimeStampDesc(sensor);
         if(sensorMeasurement != null){
             if(sensorMeasurement.getMoisture() > moistureThresholdOff ||
                 sensorMeasurement.getMoisture() <= SATURATED){
-                sensorRepository.findDistinctByName(sensor).setState(OFF);
+                sensorr.setState(OFF);
                 updateState = OFF;
             } else if (sensorMeasurement.getMoisture() < moistureThresholdOn) {
-                sensorRepository.findDistinctByName(sensor).setState(ON);
+                sensorr.setState(ON);
                 updateState = ON;
             } else {
-                if(sensorRepository.findDistinctByName(sensor).getState() == ON){
+                if(sensorr.getState() == ON){
                     updateState = HOLD_ON;
                 } else {
                     updateState = HOLD_OFF;
@@ -52,7 +53,7 @@ public class IrrigationController {
         } else {
             updateState = ERROR;
         }
-        sensorRepository.save(sensorRepository.findDistinctByName(sensor));
+        sensorRepository.save(sensorr);
 
         return updateState;
     }
