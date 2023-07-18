@@ -46,8 +46,8 @@ public class OpenGrowerWebController {
                     .findFirstBySensorOrderByTimeStampDesc(sensor.getName()).getTimeStamp().getTime();
             double minutesSinceLastUpdate = millisSinceLastUpdate / 1000.0 / 60.0;
             String state = sensor.getName() + " " +
-                    "minutes since latest reading: " + decimalFormat.format(minutesSinceLastReading) + " " +
-                    "minutes since latest update: " + decimalFormat.format(minutesSinceLastUpdate);
+                    "minutes since latest irrigation controller check: " + decimalFormat.format(minutesSinceLastReading) + " " +
+                    "minutes since latest sensor reading update: " + decimalFormat.format(minutesSinceLastUpdate);
             sensorStates.add(state);
         }
         model.addAttribute("sensorStates", sensorStates);
